@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+body{
+  font-family: "Lexend", sans-serif;
+}
+
+/* Tambahkan kode ini ke file CSS atau file style Anda */
+
+@media (max-width: 768px) {
+  .mobile-active {
+    opacity: 1 !important;
+  }
+  
+  .mobile-active h3 {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .mobile-active p {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .mobile-active div {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .group:has(.mobile-active) img {
+    filter: blur(4px);
+    transform: scale(1.1);
+  }
+}
