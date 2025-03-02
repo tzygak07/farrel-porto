@@ -9,7 +9,7 @@ import "swiper/css/effect-coverflow";
 import FrameworkSlider from "../components/FrameworkSlider";
 import DownloadCvButton from "../components/DownloadCvBUtton";
 
-function Home() {
+function Pages() {
   const [count, setCount] = useState(0);
   const [showImageModal, setShowImageModal] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
@@ -613,4 +613,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Pages;
