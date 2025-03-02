@@ -10,7 +10,7 @@ const frameworks = [
   { name: "Bootstrap", url: "https://getbootstrap.com/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" },
   { name: "React", url: "https://reactjs.org/", image: "https://michaelwashburnjr.com/hubfs/Imported_Blog_Media/react-icon_svg_.png" },
   { name: "Laravel", url: "https://laravel.com/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png" },
-  { name: "Figma", url: "https://www.figma.com/", image: "/src/assets/figma.png" },
+  { name: "Figma", url: "https://www.figma.com/", image: "/assets/figma.png" },
   { name: "Python", url: "https://www.python.org/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" },
   { name: "MySQL", url: "https://www.mysql.com/", image: "https://upload.wikimedia.org/wikipedia/id/a/a9/MySQL.png" },
   { name: "PHP", url: "https://www.php.net/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" },

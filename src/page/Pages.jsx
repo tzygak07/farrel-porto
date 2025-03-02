@@ -1,19 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaGithub, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import AOS from "aos";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import "aos/dist/aos.css"; // Import AOS styles
 import FrameworkSlider from "../components/FrameworkSlider";
-import DownloadCvButton from "../components/DownloadCvButton" 
+import DownloadCvButton from "../components/DownloadCvButton";
 
 function Pages() {
   const [count, setCount] = useState(0);
   const [showImageModal, setShowImageModal] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
   const [currentAlt, setCurrentAlt] = useState("");
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+      easing: "ease-out-cubic",
+    });
+
+    // Refresh AOS on window resize
+    window.addEventListener("resize", () => {
+      AOS.refresh();
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        AOS.refresh();
+      });
+    };
+  }, []);
 
   // Function to open the image modal
   const openImageModal = (imageSrc, imageAlt) => {
@@ -81,6 +104,7 @@ function Pages() {
         <div
           id="card"
           className="group relative p-4 sm:p-5 max-w-3xl text-left sm:text-left space-y-4 sm:space-y-6 transition-transform duration-500 ease-out hover:scale-105"
+          data-aos="fade-up"
         >
           {/* Border Kanan Atas */}
           <div className="absolute top-0 right-0 w-16 sm:w-24 h-[1px] bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.3)] animate-[borderTopRight_3s_ease-in-out_infinite]"></div>
@@ -201,7 +225,11 @@ function Pages() {
           `}</style>
 
           {/* Tentang Saya */}
-          <div className="text-center sm:text-left">
+          <div
+            className="text-center sm:text-left"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
             <h1 className="text-3xl sm:text-5xl text-white mb-2 font-semibold">
               Halo👋
             </h1>
@@ -229,7 +257,7 @@ function Pages() {
           <div className="border-t border-gray-600 w-2/3 sm:w-1/2 mx-auto my-3 sm:my-4"></div>
 
           {/* Find Me On Section */}
-          <div className="text-center">
+          <div className="text-center" data-aos="fade-up" data-aos-delay="500">
             <h3 className="text-base sm:text-lg font-semibold mb-2">
               Temukan Saya :
             </h3>
@@ -239,6 +267,8 @@ function Pages() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 sm:gap-2 bg-gray-900 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-sm hover:text-purple-400 transition"
+                data-aos="zoom-in"
+                data-aos-delay="600"
               >
                 <FaInstagram size={15} />
                 <span>Instagram</span>
@@ -249,6 +279,8 @@ function Pages() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 sm:gap-2 bg-gray-900 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-sm hover:text-purple-400 transition"
+                data-aos="zoom-in"
+                data-aos-delay="700"
               >
                 <FaGithub size={15} />
                 <span>GitHub</span>
@@ -257,6 +289,8 @@ function Pages() {
               <a
                 href="mailto:razafarrel@email.com"
                 className="flex items-center gap-1 sm:gap-2 bg-gray-900 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-sm hover:text-purple-400 transition"
+                data-aos="zoom-in"
+                data-aos-delay="800"
               >
                 <FaEnvelope size={15} />
                 <span>Email</span>
@@ -268,18 +302,26 @@ function Pages() {
 
       <div
         id="section2"
-        className="min-h-screen bg-black border-amber-500 flex items-center justify-center py-16"
+        className="min-h-screen bg-black border-amber-500 flex items-center justify-center py-16 overflow-x-hidden"
       >
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left side - Framework Slider */}
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+          >
             <FrameworkSlider />
           </div>
 
           {/* Right side - Education and Experience - Stack on mobile only */}
           <div className="flex flex-col space-y-8 text-white px-4">
             {/* Education Section */}
-            <div className="bg-[#1e1e1e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105">
+            <div
+              className="bg-[#1e1e1e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105"
+              data-aos="fade-left"
+              data-aos-delay="300"
+            >
               <h2 className="text-2xl font-bold mb-4 text-purple-400">
                 🏫 Pendidikan
               </h2>
@@ -296,7 +338,11 @@ function Pages() {
             </div>
 
             {/* Experience Section */}
-            <div className="bg-[#1e1e1e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105">
+            <div
+              className="bg-[#1e1e1e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105"
+              data-aos="fade-left"
+              data-aos-delay="500"
+            >
               <h2 className="text-2xl font-bold mb-4 text-purple-400">
                 💼 Pengalaman
               </h2>
@@ -330,10 +376,17 @@ function Pages() {
         className="min-h-screen bg-black py-16 px-4 flex items-center justify-center"
       >
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-white text-center mb-2">
+          <h2
+            className="text-4xl font-bold text-white text-center mb-2"
+            data-aos="fade-down"
+          >
             Projek Saya
           </h2>
-          <p className="text-center text-gray-400 mb-12">
+          <p
+            className="text-center text-gray-400 mb-12"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Beberapa karya yang telah saya kerjakan
           </p>
 
@@ -341,6 +394,8 @@ function Pages() {
             {/* Project 1 */}
             <div
               className="group relative overflow-hidden rounded-lg shadow-lg bg-[#1e1e1e] h-64"
+              data-aos="flip-left"
+              data-aos-delay="200"
               onClick={() => {
                 const element = document.getElementById("project1");
                 if (element) {
@@ -349,7 +404,7 @@ function Pages() {
               }}
             >
               <img
-                src="/src/assets/deskify.png"
+                src="/assets/deskify.png"
                 alt="Project 1"
                 className="w-full h-full object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110"
               />
@@ -382,6 +437,8 @@ function Pages() {
             {/* Project 2 */}
             <div
               className="group relative overflow-hidden rounded-lg shadow-lg bg-[#1e1e1e] h-64"
+              data-aos="flip-up"
+              data-aos-delay="400"
               onClick={() => {
                 const element = document.getElementById("project2");
                 if (element) {
@@ -390,7 +447,7 @@ function Pages() {
               }}
             >
               <img
-                src="/src/assets/task.png"
+                src="/assets/task.png"
                 alt="Project 2"
                 className="w-full h-full object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110"
               />
@@ -416,6 +473,8 @@ function Pages() {
             {/* Project 3 */}
             <div
               className="group relative overflow-hidden rounded-lg shadow-lg bg-[#1e1e1e] h-64"
+              data-aos="flip-right"
+              data-aos-delay="600"
               onClick={() => {
                 const element = document.getElementById("project3");
                 if (element) {
@@ -424,7 +483,7 @@ function Pages() {
               }}
             >
               <img
-                src="/src/assets/fix.png"
+                src="/assets/fix.png"
                 alt="Project 3"
                 className="w-full h-full object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110"
               />
@@ -451,28 +510,39 @@ function Pages() {
 
       <div
         id="section4"
-        className="min-h-screen bg-black py-16 px-4 flex items-center justify-center"
+        className="min-h-screen bg-black py-16 px-4 flex items-center justify-center overflow-x-hidden"
       >
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-white text-center mb-2">
+          <h2
+            className="text-4xl font-bold text-white text-center mb-2"
+            data-aos="fade-down"
+          >
             Sertifikat
           </h2>
-          <p className="text-center text-gray-400 mb-12">
+          <p
+            className="text-center text-gray-400 mb-12"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Pencapaian dan pengakuan keterampilan yang telah saya peroleh
           </p>
 
           <div className="space-y-12">
             {/* Certificate 1 */}
-            <div className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102">
+            <div
+              className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
               <div className="flex flex-col md:flex-row">
                 <div
                   className="md:w-1/3 h-64 overflow-hidden cursor-pointer relative"
                   onClick={() =>
-                    openImageModal("/src/assets/ukk.jpg", "Certificate 1")
+                    openImageModal("/assets/ukk.jpg", "Certificate 1")
                   }
                 >
                   <img
-                    src="/src/assets/ukk.jpg"
+                    src="/assets/ukk.jpg"
                     alt="Certificate 1"
                     className="w-full h-full object-cover"
                   />
@@ -503,16 +573,21 @@ function Pages() {
             </div>
 
             {/* Certificate 2 */}
-            <div className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102">
+            <div
+              className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+            >
               <div className="flex flex-col md:flex-row">
                 <div
                   className="md:w-1/3 h-64 overflow-hidden cursor-pointer relative"
                   onClick={() =>
-                    openImageModal("/src/assets/pkl.jpg", "Certificate 2")
+                    openImageModal("/assets/pkl.jpg", "Certificate 2")
                   }
                 >
                   <img
-                    src="/src/assets/pkl.jpg"
+                    src="/assets/pkl.jpg"
                     alt="Certificate 2"
                     className="w-full h-full object-cover"
                   />
@@ -543,16 +618,21 @@ function Pages() {
             </div>
 
             {/* Certificate 3 */}
-            <div className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102">
+            <div
+              className="bg-[#1e1e1e] rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-102"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
               <div className="flex flex-col md:flex-row">
                 <div
                   className="md:w-1/3 h-64 overflow-hidden cursor-pointer relative"
                   onClick={() =>
-                    openImageModal("/src/assets/ukbi.jpg", "Certificate 3")
+                    openImageModal("/assets/ukbi.jpg", "Certificate 3")
                   }
                 >
                   <img
-                    src="/src/assets/ukbi.jpg"
+                    src="/assets/ukbi.jpg"
                     alt="Certificate 3"
                     className="w-full h-full object-cover"
                   />
