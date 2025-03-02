@@ -93,8 +93,8 @@ const Navbar = () => {
                   onClick={() => scrollToSection(section)}
                   className={getNavLinkClass(section)}
                 >
-                  {section === "section1" ? "Home" : 
-                   section === "section2" ? "About" :
+                  {section === "section1" ? "Beranda" : 
+                   section === "section2" ? "Tentang" :
                    section === "section3" ? "Projek" : "Sertifikat"}
                   {/* Only show the purple highlight when scrolled or not in section1 */}
                   {activeSection === section && (!(section === "section1" && !isScrolled)) && (
@@ -189,8 +189,8 @@ const Navbar = () => {
                   className={`${getNavLinkClass(section)} mb-4 text-xl`}
                   whileHover={{ x: 10, color: "#d8b4fe" }}
                 >
-                  {section === "section1" ? "Home" : 
-                   section === "section2" ? "About" :
+                  {section === "section1" ? "Beranda" : 
+                   section === "section2" ? "Tentang" :
                    section === "section3" ? "Projek" : "Sertifikat"}
                 </motion.span>
               ))}
