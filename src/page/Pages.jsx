@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import FrameworkSlider from "../components/FrameworkSlider";
-import DownloadCvButton from "../components/DownloadCvBUtton";
+import DownloadCvButton from "../components/DownloadCvButton" 
 
 function Pages() {
   const [count, setCount] = useState(0);
