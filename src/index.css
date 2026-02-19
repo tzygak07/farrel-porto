@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+  --color-primary: #0a0a0a;
+  --color-background-light: #ffffff;
+  --color-background-dark: #0a0a0a;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Inter Tight", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
+
+body {
+  scroll-behavior: smooth;
+  margin: 0;
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSBvl_VRvHIIYmLoOUOBdScrf7mufK73TSJ7kYIHnDCA7-_IkOol41uJ54IdzJ254uuRKY74k7erD0SQAtZIOjD9VkguhqqnJgDJA7sRkqBI-SLSEF0ArB18IICEQdEbdwLrjXotTnhS4h3J5ElB6xusb7L2TEj5HLquyFa5KnYl7VGh0XnZmeXG0Wd_0gPbRGX4WV_UBo3WA3unkmdBOtfAJRB-alb62Hafvp-cOaHuwcXQsrY8Nw4qskY4PTEy4wa7dVSarYqg");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+.hero-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.dark .hero-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+}
+
+.noise-overlay {
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSBvl_VRvHIIYmLoOUOBdScrf7mufK73TSJ7kYIHnDCA7-_IkOol41uJ54IdzJ254uuRKY74k7erD0SQAtZIOjD9VkguhqqnJgDJA7sRkqBI-SLSEF0ArB18IICEQdEbdwLrjXotTnhS4h3J5ElB6xusb7L2TEj5HLquyFa5KnYl7VGh0XnZmeXG0Wd_0gPbRGX4WV_UBo3WA3unkmdBOtfAJRB-alb62Hafvp-cOaHuwcXQsrY8Nw4qskY4PTEy4wa7dVSarYqg");
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+}
+
+.project-card {
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.2);
+}
+
+.dark .project-card:hover {
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
